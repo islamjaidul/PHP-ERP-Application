@@ -1,0 +1,5 @@
+{
+    "require": {
+        "thujohn/pdf": "~1.0"
+    }
+}

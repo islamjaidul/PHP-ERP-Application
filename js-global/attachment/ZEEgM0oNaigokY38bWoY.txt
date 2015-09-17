@@ -1,0 +1,46 @@
+http://www.bbc.co.uk/bengali/index.xml
+https://www.facebook.com/feeds/page.php?id=307743955928360&format=rss20
+https://www.facebook.com/feeds/page.php?id=136760552522&format=rss20
+http://www.ynet.co.il/Integration/StoryRss2.xml
+http://goo.gl/0NSRH
+https://sports.yahoo.com/golf/rss.xml
+http://rss.cnn.com/rss/edition_asia.rss
+http://rss.cnn.com/rss/edition_football.rss
+http://rss.cnn.com/rss/cnn_latest.rss
+http://rss.cnn.com/rss/edition_travel.rss
+http://rss.cnn.com/rss/edition.rss
+
+create table rss
+(
+id int auto_increment primary key,
+title varchar(200),
+source varchar(200),
+feed_url varchar(200),
+categoryid int,
+subcategoryid int,
+sub_sub_categoryid int,
+sub_sub_sub_categoryid int,
+sub_sub_sub_sub_categoryid int,
+foreign key(categoryid)references category(id),
+foreign key(subcategoryid)references subcategory(id),
+foreign key(sub_sub_categoryid)references sub_sub_category(id),
+foreign key(sub_sub_sub_categoryid)references sub_sub_sub_category(id),
+foreign key(sub_sub_sub_sub_categoryid)references sub_sub_sub_sub_category(id)
+)
+
+create table upload
+(
+id int auto_increment primary key,
+rssid int,
+categoryid int,
+subcategoryid int,
+sub_sub_categoryid int,
+sub_sub_sub_categoryid int,
+sub_sub_sub_sub_categoryid int,
+foreign key(rssid) references rss(id),
+foreign key(categoryid) references category(id),
+foreign key(subcategoryid) references subcategory(id),
+foreign key(sub_sub_categoryid) references sub_sub_category(id),
+foreign key(sub_sub_sub_categoryid) references sub_sub_sub_category(id),
+foreign key(sub_sub_sub_sub_categoryid) references sub_sub_sub_sub_category(id)
+)
